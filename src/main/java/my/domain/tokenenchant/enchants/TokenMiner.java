@@ -64,6 +64,7 @@ public class TokenMiner extends EnchantHandler {
 		}
 	}
 	
+	@Override
 	public String getName() {
 		return "TokenMiner";
 	}
