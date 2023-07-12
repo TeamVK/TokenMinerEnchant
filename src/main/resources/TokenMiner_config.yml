@@ -1,0 +1,18 @@
+Enchants:
+  TokenMiner:
+    description: "You can earn tokens by mining!"
+    event_map:
+      BlockBreakEvent: "LOW"
+      TEBlockExplodeEvent: "LOW"
+    price: 10
+    max: 4
+    multiplier: 2
+    occurrence: always
+    apply_fortune: false
+    fortune_multiplier: 2
+    earning_message: "&aYou mined &e%amount% &atokens!"
+    sound: "ORB_PICKUP"
+    interval: 10 #every 10 blocks mined, you get the tokens.
+    trigger_event:
+      BlockBreakEvent: true
+      TEBlockExplodeEvent: true

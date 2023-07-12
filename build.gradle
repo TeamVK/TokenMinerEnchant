@@ -1,0 +1,34 @@
+plugins {
+    id "com.github.unafraid.gradle.git-repo-plugin" version "2.0.4.1"
+    id 'java'
+}
+apply plugin: "com.github.unafraid.gradle.git-repo-plugin"
+
+defaultTasks 'clean', 'jar'
+
+group 'my.domain.tokenenchant'
+version '1.0.0'
+
+// in case someone wish to use MC 1.8 with Java 8.
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+        content {
+            includeGroup 'org.bukkit'
+            includeGroup 'org.spigotmc'
+        }
+    }
+    maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven { url = 'https://oss.sonatype.org/content/repositories/central' }
+    github("teamvk", "maven-repository", "origin", "master", "release")
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT' // The Spigot API with no shadowing. Requires the OSS repo.
+    compileOnly 'com.vk2gpz.tokenenchant:TokenEnchantAPI:+'
+}
+
